@@ -119,20 +119,9 @@ a:hover {
   margin-bottom: 0.5em;
 }
 
-#horoscope {
-  width: 75%;
+#equip {
+  border: 5px;
 }
-
-#horoscope th{
-    width: 50%;
-    text-align: center;
-  }
-#horoscope td{
-    width: 50%;
-    text-align: center;
-    font-family: Monospace;
-    font-size: 32pt;
-  }
 
 a {
   text-decoration: none;
