@@ -21,7 +21,7 @@ var Form = document.getElementById('formulario');
 /* ----------EQUIPAMENTOS-------- */
 for(let i=1;i<EQUIPAMENTOS.length;i++){
     let S = EQUIPAMENTOS[i];
-    Form.insert(
+    Form.innerHTML += (
         '<input type="radio" id="'+S+'" name="equipamento" value="'+S+'"> </input>'+
         '<label for="'+S+'">'+S+'</label><br>'
     );
