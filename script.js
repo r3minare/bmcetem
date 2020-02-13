@@ -1,3 +1,30 @@
+// Restricts input for the given textbox to the given inputFilter function.
+function setInputFilter(textbox, inputFilter) {
+    ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+      textbox.addEventListener(event, function() {
+        if (inputFilter(this.value)) {
+          this.oldValue = this.value;
+          this.oldSelectionStart = this.selectionStart;
+          this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+          this.value = this.oldValue;
+          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        } else {
+          this.value = "";
+        }
+      });
+    });
+  }
+
+setInputFilter(document.getElementById("quant-input"), function(value) {
+    return /^\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+});
+
+setInputFilter(document.getElementById("tempo-input"), function(value) {
+    return /^\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+});
+
+
 var MATERIAIS = [
     "Plástico", "Metal", "YOK", "Acrílico",
     "Vidro", "Cabos", "Borracha", "Fonte", "Tubo",
@@ -22,6 +49,16 @@ var EQUIPAMENTOS = [
 ]
 
 var Form = document.getElementById('formulario');
+
+function reshape(X, max_len){
+    let Y = [[]]
+    let j = 0;
+    for(let i=0; i<X.length; i++){
+        if (i < max_len){
+            Y[i] 
+        }
+    }
+}
 
 /* ----------EQUIPAMENTOS-------- */
 var Equip = document.getElementById('equip');
