@@ -27,7 +27,7 @@ setInputFilter(document.getElementById("tempo-input"), function(value) {
 
 var MATERIAIS = [
     "Plástico", "Metal", "YOK", "Acrílico",
-    "Vidro", "Cabos", "Borracha", "Fonte", "Tubo",
+    "Vidro", "Cabos", "Borracha", "Fonte",
     "Alumínio", "Placa", "Lâmpada", "Valor final",
     ]
 
@@ -50,16 +50,6 @@ var EQUIPAMENTOS = [
 
 var Form = document.getElementById('formulario');
 
-function reshape(X, max_len){
-    let Y = [[]]
-    let j = 0;
-    for(let i=0; i<X.length; i++){
-        if (i < max_len){
-            Y[i] 
-        }
-    }
-}
-
 /* ----------EQUIPAMENTOS-------- */
 var Equip = document.getElementById('equip');
 for(let i=0;i<EQUIPAMENTOS.length;i++){
@@ -70,4 +60,11 @@ for(let i=0;i<EQUIPAMENTOS.length;i++){
     );
 }
 
-/* -------MATERIAIS-------- */
+/* -------VALORES-------- */
+var Valor = document.getElementById('valor');
+for(let i=0;i<MATERIAIS.length;i++){
+    let S = MATERIAIS[i];
+    Valor.innerHTML += (
+        '<div class="grid-item"><span><b>'+S+'</b></span><br><span>R$ </span><input class="text-input" type="text"></input></div>'
+    );
+}
