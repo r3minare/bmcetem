@@ -11,8 +11,13 @@ var BASES = [
 ]
 
 var EQUIPAMENTOS = [
-"Monitor CRT Modulo FA 3435",
+"Monitor CRT Modelo FA 3435",
+"Monitor CRT Modelo C15L",
+"Impressora HP Officejet 6410",
 "Impressora HP Modelo CB412A",
+"Monitor LCD Modelo 740",
+"Monitor LCD Modelo W19",
+"CPU DELL Modelo DCSM",
 "CPU DELL Modelo DC5M1F",
 ]
 
