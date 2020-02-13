@@ -81,9 +81,12 @@ a:hover {
   border: thin solid #000000;
 }
 
+.formcell{
+  float: left;
+}
+
 #cell1{
   border: thin solid #000000;
-  float: left;
 }
 
 #cell2{
@@ -125,7 +128,7 @@ p {
 
 /* Small Screens (mobile) */
 @media screen and (max-width: 800px) {
-  #cell1 {
+  .formcell{
     float: none;
   }
 }
