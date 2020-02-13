@@ -87,11 +87,11 @@ a:hover {
 }
 
 #cell1{
-  border: 5;
+  border: thick solid #000000;
 }
 
 #cell2{
-  border: 5;
+  border: thick solid #000000;
 }
 
 
