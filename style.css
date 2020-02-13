@@ -77,22 +77,17 @@ a:hover {
   margin-bottom: 0.5em;
 }
 
-#research {
-  width: 200px;
-  margin-bottom: 0.5em;
-}
-
 #equip {
-  border: 5;
+  border: thin solid #000000;
 }
 
 #cell1{
-  border: thick solid #000000;
+  border: thin solid #000000;
   float: left;
 }
 
 #cell2{
-  border: thick solid #000000;
+  border: thin solid #000000;
 }
 
 
