@@ -1,6 +1,6 @@
 body {
-  background-color: #111111;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #111111;
   font-family: Monospace;
   text-align: justify;
   text-justify: inter-word;
@@ -20,7 +20,7 @@ table {
 
 table, th, td {
   font-size: 16px;
-  border: 1px solid white;
+  border: 1px solid #111111;
   border-collapse: collapse;
 }
 
@@ -44,22 +44,8 @@ td {
 	height: 180px;
 }
 
-.poem {
-  background-color: #111111;
-	width : 50%;
-	position: relative;
-	text-align: justify;
-	text-justify: inter-word;
-	overflow : hidden;
-}
-
-.poem p {
-  text-align: right;
-  font-family: Monospace;
-}
-
 a {
-	color: #bbbbbb;
+	color: #111111;
 	text-decoration: none;
 }
 
@@ -120,8 +106,17 @@ a:hover {
 }
 
 #equip {
-  border: 5px;
+  border: 5;
 }
+
+#cell1{
+  border: 5;
+}
+
+#cell2{
+  border: 5;
+}
+
 
 a {
   text-decoration: none;
