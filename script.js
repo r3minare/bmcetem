@@ -16,10 +16,12 @@ var EQUIPAMENTOS = [
 "CPU DELL Modelo DC5M1F",
 ]
 
+var Form = document.getElementById('formulario');
+
 /* ----------EQUIPAMENTOS-------- */
 for(let i=1;i<EQUIPAMENTOS.length;i++){
     let S = EQUIPAMENTOS[i];
-    $('formulario').insert(
+    Form.insert(
         '<input type="radio" id="'+S+'" name="equipamento" value="'+S+'"> </input>'+
         '<label for="'+S+'">'+S+'</label><br>'
     );
