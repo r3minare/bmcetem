@@ -16,6 +16,7 @@ function setInputFilter(textbox, inputFilter) {
     });
   }
 
+var NO_BASE = "Nenhum";
 
 var DADOS = {
     "Monitor CRT Modelo FA 3435": ["Modelo", "MITSUBISHI", 48.0, null, 0.0, 5937.0, 44.03, 0.0, 0.0, 1469.0, 10.89, 401.0, 2.97, 0.0, 0.0, 1991.0, 14.77, null, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -28,38 +29,78 @@ var DADOS = {
     "CPU DELL Modelo DCSM1F": ["S/N: 9SSPX4", "DELL", 20.0, 1100.0, 11.68, 0.0, 0.0, 436.0, 4.63, 6469.0, 68.69, 135.0, 1.43, 660.0, 7.01, 618.0, 6.56, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 }
 
-setInputFilter(document.getElementById("quant-input"), function(value) {
-    return /^\d*$/.test(value); // Allow digits and '.' only, using a RegExp
-});
+function setIntFilter(el_id){
+    setInputFilter(document.getElementById(el_id), function(value) {
+        return /^\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+    });
+}
 
-setInputFilter(document.getElementById("tempo-input"), function(value) {
-    return /^\d*$/.test(value); // Allow digits and '.' only, using a RegExp
-});
+function setFloatFilter(el_id){
+    console.log(el_id);
+    setInputFilter(document.getElementById(el_id), function(value) {
+        return /^(\d+,\d+|\d*)$/.test(value); // Allow digits and '.' only, using a RegExp
+    });
+}
+
+setIntFilter("quant-input");
+
 
 var MATERIAIS = [
     "PLÁSTICO", "VIDRO", "ALUMÍNIO", "METAL",
     "CABOS", "FONTE","PLACA", "YOK", "BORRACHA",
-    "Lâmpada", "ACRÍLICO",
+    "LÂMPADA", "ACRÍLICO",
 ]
 
-var BASES = [
-"Nenhum",
-"GEA",
-"CEMPRE",
-]
+var BASES = {
+"Nenhum" : {
+    "PLÁSTICO":	 1.50,
+    "VIDRO"   : 10.00,
+    "ALUMÍNIO":  2.50,
+    "METAL"   :  1.00,
+    "CABOS"   :  2.00,
+    "PLACA"   :  4.50,
+    "YOK"     :	 null,
+    "BORRACHA":  null,
+    "LÂMPADA" :- 1.00,
+    "ACRÍLICO":  null,	
+    "FONTE"	  :  null,
+    },
+"GEA" : {
+    "PLÁSTICO":	 1.50,
+    "VIDRO"   : 10.00,
+    "ALUMÍNIO":  2.50,
+    "METAL"   :  1.00,
+    "CABOS"   :  2.00,
+    "PLACA"   :  4.50,
+    "YOK"     :	 null,
+    "BORRACHA":  null,
+    "LÂMPADA" :- 1.00,
+    "ACRÍLICO":  null,	
+    "FONTE"	  :  null,
+    },
+"CEMPRE" : {
+    "PLÁSTICO":	 1.50,
+    "VIDRO"   : 10.00,
+    "ALUMÍNIO":  2.50,
+    "METAL"   :  1.00,
+    "CABOS"   :  2.00,
+    "PLACA"   :  4.50,
+    "YOK"     :	 null,
+    "BORRACHA":  null,
+    "LÂMPADA" :- 1.00,
+    "ACRÍLICO":  null,	
+    "FONTE"	  :  null,
+    }
+}
 
-var VALORES = {
-"PLÁSTICO":	 1.50,
-"VIDRO"   : 10.00,
-"ALUMÍNIO":  2.50,
-"METAL"   :  1.00,
-"CABOS"   :  2.00,
-"PLACA"   :  4.50,
-"YOK"     :	 null,
-"BORRACHA":  null,
-"LÂMPADA" :- 1.00,
-"ACRÍLICO":  null,	
-"FONTE"	  :  null,
+function to_screen(x){
+    let s = x.replace(".", ",");
+    return s;
+}
+
+function from_screen(s){
+    let x = s.replace(",", ".");
+    return x;
 }
 
 var EQUIPAMENTOS = Object.keys(DADOS);
@@ -69,49 +110,123 @@ var Form = document.getElementById('formulario');
 /* ----------EQUIPAMENTOS-------- */
 var Equip = document.getElementById('equip');
 for(let i=0;i<EQUIPAMENTOS.length;i++){
-    let S = EQUIPAMENTOS[i];
+    let equip = EQUIPAMENTOS[i];
     Equip.innerHTML += (
-        '<input type="radio" id="'+S+'" name="equip-input" value="'+S+'"></input>'+
-        '<label for="'+S+'">'+S+'</label><br>'
+        '<input type="radio" id="' + equip + '" name="equip-input" value="' + equip + '"></input>'+
+        '<label for="' + equip + '">' + equip + '</label><br>'
     );
 }
 
 /* -------VALORES-------- */
 var Valor = document.getElementById('valor');
 for(let i=0;i<MATERIAIS.length;i++){
-    let S = MATERIAIS[i];
+    let mat = MATERIAIS[i];
+    let mat_v = mat + '-v';
+    let mat_tv = mat + '-tv';
     Valor.innerHTML += (
         '<div class="grid-item">'+
           '<div class="item">'+
-            '<span><b>'+
-            S+
-            '</b></span>'+
+            '<span><b>' + mat + '</b><br>R$</span>'+
+            '<input class="text-input" type="text" id="' + mat_v + '" value="" onchange="reset_base();"></input>'+
+            '<span>/Kg</span>'+
           '</div>'+
-          '<span>R$ </span>'+
-          '<input class="text-input" type="text" value="10"></input>'+
+
+          '<b><span>R$ </span><span id="' + mat_tv + '">0.00</span></b>'+
         '</div>'
     );
+    setFloatFilter(mat_v);
 }
+Valor.innerHTML += (
+    '<div class="grid-item">'+
+          '<div class="item">'+
+            '<span><b>Total</b></span>'+
+          '</div>'+
+          '<b><span>R$ </span><span id="total-tv">0.00</span></b>'+
+        '</div>'
+);
 
 /* -------MASSA-------- */
 var Massa = document.getElementById('massa');
 for(let i=0;i<MATERIAIS.length;i++){
-    let S = MATERIAIS[i];
+    let mat = MATERIAIS[i];
+    let mat_m = mat + '-m';
+    let mat_p = mat + '-p';
     Massa.innerHTML += (
         '<div class="grid-item">'+
-        '<h4>'+S+'</h4>'+
-          '<span class="value" id="'+S+'-m'+'"></span>'+'<span>g</span><br>'+
-          '<span class="value" id="'+S+'-p'+'"></span>'+'<span>%</span>'+
+        '<h4>' + mat + '</h4>'+
+            '<span class="value" id="' + mat_m + '"></span>'+'<span>g</span><br>'+
+            '<span class="value" id="' + mat_p + '"></span>'+'<span>%</span>'+
         '</div>'
     );
 }
+Massa.innerHTML += (
+    '<div class="grid-item">'+
+        '<h4>Total</h4>'+
+            '<span id="total-m"></span><span>Kg</span>'+
+    '</div>'
+);
 
 function update_base(){
     let base = document.getElementById("base-input").value;
-    print(base);
+    if (base === NO_BASE) return;
+
+    load_base();
+    update_all();
 }
 
-function calc(){
+function reset_base(){
+    document.getElementById("base-input").value = NO_BASE;
+    update_all();
+}
+
+function load_base(){
+    let base = document.getElementById("base-input").value;
+    if (base === NO_BASE) return;
+    
+    _load_base(base);
+    update_all();
+}
+
+function _load_base(base){
+    for(let i=0;i<MATERIAIS.length;i++){
+        let mat = MATERIAIS[i];
+        let val = BASES[base][mat];
+        if(val === null){
+            val = "0,00";
+        }else{
+            val = val.toString();
+        }
+        let input_v = document.getElementById(mat+"-v");
+        input_v.value = to_screen(val);
+    }
+}
+
+_load_base(NO_BASE);
+
+function update_price(){
+    let base = document.getElementById("base-input").value;
+    let quant = parseFloat(from_screen(document.getElementById("quant-input").value));
+
+    let total = 0.0;
+
+    for(let i=0;i<MATERIAIS.length;i++){
+        let mat = MATERIAIS[i];
+        let mat_v = mat + "-v";
+        let mat_tv = mat + "-tv";
+
+        let val = parseFloat(from_screen(document.getElementById(mat_v).value));
+        if(val === null){
+            val = 0.0;
+        }
+        let tval = val * quant;
+        let span_tv = document.getElementById(mat_tv);
+        span_tv.innerHTML = to_screen((tval.toFixed(2)).toString());
+        total += tval;
+    }
+    document.getElementById("total-tv").innerHTML = to_screen((total.toFixed(2)).toString());
+}
+
+function update_mass(){
     let equips = document.getElementsByName("equip-input");
     let equip;
     for(let i=0;i<equips.length;i++){
@@ -120,10 +235,17 @@ function calc(){
             break;
         }
     }
-    let quant = parseFloat(document.getElementById("quant-input").value);
-    let tempo = parseFloat(document.getElementById("tempo-input").value);
+    if (equip === undefined) return;
+
+    let quant = parseInt(document.getElementById("quant-input").value);
 
     let equip_dados = DADOS[equip];
+
+    let m = 0.0;
+
+    let tempo = equip_dados[2] * quant;
+
+    document.getElementById("tempo-v").innerHTML = (~~tempo).toString();
 
     for(let j=0;j<MATERIAIS.length;j++){
         let mat = MATERIAIS[j];
@@ -134,7 +256,15 @@ function calc(){
         let txt_m = document.getElementById(mat + "-m");
         let txt_p = document.getElementById(mat + "-p");
 
-        txt_m.innerHTML = (mat_m * quant).toString();
-        txt_p.innerHTML = (mat_p).toString();
+        txt_m.innerHTML = to_screen(((mat_m * quant).toFixed(0)).toString());
+        txt_p.innerHTML = to_screen((mat_p.toFixed(1)).toString());
+
+        m += mat_m;
     }
+    document.getElementById("total-m").innerHTML = to_screen(((m / 1000).toFixed(1)).toString());
+}
+
+function update_all(){
+    update_price();
+    update_mass();
 }
