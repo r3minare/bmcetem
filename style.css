@@ -75,61 +75,70 @@ a:hover {
   flex-grow: 1;
 }
 
-#headshot {
-  width: 150px;
-  border-radius: 50%;
-  margin-bottom: 0.5em;
-}
-
-#equip {
-  border: thin solid #000000;
-}
-
 .grid-container {
   display: inline-grid;
+  width: 100%;
+  height: 100%;
   grid-template-columns: auto auto auto auto;
 }
 
 .grid-item {
-  min-width: 204px;
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 10px;
+  min-height:40px;
   font-size: 18px;
   text-align: right;
 }
 
 .item{
   text-align: left;
-  float: left; padding-right: 5px;
+  float: left;
+  padding-right: 5px;
 }
 
 .text-input {
   width: 50px;
 }
 
-.formcell{
-  min-width: 306px;
+#formulario{
+  text-align: center;
+  width: 90%;
+  height: 100%;
+}
+
+#equip{
+  text-align: left;
+}
+
+.cell-1{
+  width: 24%;
+  min-height: 300px;
+  border: thin solid #000000;
+  float: left;
+}
+
+.cell-2{
+  border: thin solid #000000;
+}
+
+.cell-2-1{
+  width: 25%;
   min-height: 100px;
   float: left;
   border: thin solid #000000;
-  text-align: center;
 }
 
-.formcell+{
-  min-width: 750px;
-  min-height: 100px;
+.cell-2-2{
+  width: 75%;
+  min-height: 200px;
   float: left;
   border: thin solid #000000;
-  text-align: center;
 }
 
-#cell1{
-  border: thin solid #000000;
-}
-
-#cell2{
-  border: thin solid #000000;
+.cell3{
+  width: 100%;
+  height: 50%;
 }
 
 
@@ -167,10 +176,6 @@ p {
 
 /* Small Screens (mobile) */
 @media screen and (max-width: 800px) {
-  .formcell{
-    float: none;
-  }
-
   .grid-container{
     grid-template-columns: auto auto;
   }
