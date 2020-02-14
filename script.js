@@ -112,10 +112,10 @@ function calc(){
         let mat_m = equip_dados[2*j];
         let mat_p = equip_dados[2*j+1];
 
-        let m = document.getElementById(mat + "-m");
-        let p = document.getElementById(mat + "-p");
+        let txt_m = document.getElementById(mat + "-m");
+        let txt_p = document.getElementById(mat + "-p");
 
-        m.innerHTML = "200";
-        p.innerHTML = "100";
+        txt_m.innerHTML = (mat_m * quant).toString();
+        txt_p.innerHTML = (mat_p * quant).toString();
     }
 }
