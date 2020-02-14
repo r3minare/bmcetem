@@ -164,22 +164,21 @@ p {
 
 /* Big Screens */
 @media screen and (min-width: 800px) {
-  #container {
-    padding-left: 28px;
-    padding-right: 28px;
+  .cell-1{
+    float: left;
   }
-
-  #leftright {
-    display: flex;
+  
+  .cell-2-1{
+    float: left;
   }
-
-  #left {
-    margin-right: 1.15em;
+  
+  .cell-2-2{
+    float: left;
   }
 }
 
 /* Small Screens (mobile) */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
   .grid-container{
     grid-template-columns: auto auto;
   }
