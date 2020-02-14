@@ -37,16 +37,30 @@ setInputFilter(document.getElementById("tempo-input"), function(value) {
 });
 
 var MATERIAIS = [
-    "Plástico", "Metal", "YOK", "Acrílico",
-    "Vidro", "Cabos", "Borracha", "Fonte",
-    "Alumínio", "Placa", "Lâmpada", "Valor final",
-    ]
+    "PLÁSTICO", "VIDRO", "ALUMÍNIO", "METAL",
+    "CABOS", "FONTE","PLACA", "YOK", "BORRACHA",
+    "Lâmpada", "ACRÍLICO",
+]
 
 var BASES = [
+"Nenhum",
 "GEA",
 "CEMPRE",
-"Nenhum",
 ]
+
+var VALORES = {
+"PLÁSTICO":	 1.50,
+"VIDRO"   : 10.00,
+"ALUMÍNIO":  2.50,
+"METAL"   :  1.00,
+"CABOS"   :  2.00,
+"PLACA"   :  4.50,
+"YOK"     :	 null,
+"BORRACHA":  null,
+"LÂMPADA" :- 1.00,
+"ACRÍLICO":  null,	
+"FONTE"	  :  null,
+}
 
 var EQUIPAMENTOS = Object.keys(DADOS);
 
@@ -92,6 +106,11 @@ for(let i=0;i<MATERIAIS.length;i++){
     );
 }
 
+function update_base(){
+    let base = document.getElementById("base-input").value;
+    print(base);
+}
+
 function calc(){
     let equips = document.getElementsByName("equip-input");
     let equip;
@@ -109,13 +128,13 @@ function calc(){
     for(let j=0;j<MATERIAIS.length;j++){
         let mat = MATERIAIS[j];
 
-        let mat_m = equip_dados[2*j];
-        let mat_p = equip_dados[2*j+1];
+        let mat_m = equip_dados[2*j   +3];
+        let mat_p = equip_dados[2*j+1 +3];
 
         let txt_m = document.getElementById(mat + "-m");
         let txt_p = document.getElementById(mat + "-p");
 
         txt_m.innerHTML = (mat_m * quant).toString();
-        txt_p.innerHTML = (mat_p * quant).toString();
+        txt_p.innerHTML = (mat_p).toString();
     }
 }

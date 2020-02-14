@@ -2,6 +2,7 @@ body {
   background-color: #ffffff;
   color: #111111;
   font-family: Monospace;
+  align-content: center;
   text-align: justify;
   text-justify: inter-word;
   font-size: 14px;
@@ -80,6 +81,15 @@ a:hover {
   width: 100%;
   height: 100%;
   grid-template-columns: auto auto auto auto;
+  text-align: right;
+}
+
+.grid-container-3 {
+  display: inline-grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: auto auto auto;
+  text-align: center;
 }
 
 .grid-item {
@@ -88,7 +98,7 @@ a:hover {
   padding: 10px;
   min-height:40px;
   font-size: 18px;
-  text-align: right;
+  
 }
 
 .item{
@@ -105,97 +115,27 @@ a:hover {
   text-align: center;
   width: 90%;
   height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #equip{
-  text-align: left;
+  align-content: center;
+  text-align: center;
+  text-anchor: start;
 }
 
-.cell-1{
-  width: 24%;
-  min-height: 300px;
-  border: thin solid #000000;
-  float: left;
-}
-
-.cell-2{
-  height: 100%;
-  width: 100%;
-}
-
-.cell-2-1{
-  width: 25%;
-  min-height: 100px;
-  float: left;
+.cell{
+  align-content: center;
+  text-align: center;
   border: thin solid #000000;
 }
 
-.cell-2-2{
-  width: 75%;
-  height: 200px;
-  float: left;
-}
-
-.cell3{
-  width: 100%;
-  height: 50%;
-}
-
-.value{
-  border: thin solid #000000;
-  min-width: 30px;
-}
-
-a {
-  text-decoration: none;
-}
-
-#links p {
-  margin-bottom: 0.0em;
-}
-
-#links {
-  font-size: 18pt;
-}
-
-p {
-  margin-top: 0em;
-}
-
-/* Big Screens */
-@media screen and (min-width: 800px) {
-  .cell-1{
-    float: left;
-  }
-  
-  .cell-2-1{
-    float: left;
-  }
-  
-  .cell-2-2{
-    float: left;
-  }
-}
 
 /* Small Screens (mobile) */
 @media screen and (max-width: 800px) {
   .grid-container{
     grid-template-columns: auto auto;
-  }
-
-  .cell-1{
-    width: 100%;
-    float: none;
-  }
-  
-  .cell-2-1{
-    width: 100%;
-    float: none;
-  }
-  
-  .cell-2-2{
-    width: 100%;
-    float: none;
   }
 }
 

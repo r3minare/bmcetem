@@ -7,49 +7,44 @@
   </head>
   <body>
 
-    <form id="formulario">
-      <div class="cell-1">
-        <div id="equip">
-          <h3>Equipamentos</h3>
-        </div>
-      </div>
+    <h1>Tabela de Balanço de Massa</h1>
 
-      <div class="cell-2">
-        </div>
-          <div class="cell-2-1" id="quant">
+    <form id="formulario">
+
+        <div class="cell">
+          <h3>Equipamento</h3>
+          <div id="equip">
+        
+          </div>
+        </div> 
+
+        <div class="grid-container-3">
+          <div class="grid-item" id="quant">
             <h4>Quantidade</h4>
             Quantidade: <input type="text" id="quant-input" style="width: 40px;"></input>
           </div>
 
-          <div class="cell-2-1" id="tempo">
+          <div class="grid-item" id="tempo">
             <h4>Tempo médio de desmontagem</h4>
             <input id="tempo-input" type="text" name="tempo" style="width: 40px;"></input> Minutos
           </div>
 
-          <div class="cell-2-1" id="base">
+          <div class="grid-item" id="base">
             <h4>Base de preços</h4>
-            Base: <select id="base-opt" name="base">
+            Base: <select id="base-input" name="base">
+              <option value="Nenhum">Nenhum</option>
               <option value="GEA">GEA</option>
               <option value="CEMPRE">CEMPRE</option>
-              <option value="Nenhum">Nenhum</option>
             </select>
           </div>
         </div>
 
-        <div class="cell-2-2">
           <div class="grid-container" id="valor">
           </div>
-        </div>
 
-      </div>
-
-      <br>
-      <br>
-
-      <div class="cell-3">
+        <h1 style="margin-top: 3cm;">Resultados</h1>
         <div class="grid-container" id="massa">
         </div>
-      </div>
     </form>
 
     <script src="script.js" type="text/javascript"></script>
