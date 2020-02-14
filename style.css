@@ -141,6 +141,10 @@ a:hover {
   height: 50%;
 }
 
+.value{
+  border: thin solid #000000;
+  min-width: 30px;
+}
 
 a {
   text-decoration: none;
