@@ -91,12 +91,17 @@ a:hover {
 }
 
 .grid-item {
-  min-width: 125px;
+  min-width: 204px;
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 10px;
-  font-size: 10px;
-  text-align: center;
+  font-size: 18px;
+  text-align: right;
+}
+
+.item{
+  text-align: left;
+  float: left; padding-right: 5px;
 }
 
 .text-input {
@@ -104,7 +109,7 @@ a:hover {
 }
 
 .formcell{
-  min-width: 300px;
+  min-width: 306px;
   min-height: 100px;
   float: left;
   border: thin solid #000000;
@@ -164,6 +169,10 @@ p {
 @media screen and (max-width: 800px) {
   .formcell{
     float: none;
+  }
+
+  .grid-container{
+    grid-template-columns: auto auto;
   }
 }
 

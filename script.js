@@ -65,6 +65,6 @@ var Valor = document.getElementById('valor');
 for(let i=0;i<MATERIAIS.length;i++){
     let S = MATERIAIS[i];
     Valor.innerHTML += (
-        '<div class="grid-item"><span><b>'+S+'</b></span><br><span>R$ </span><input class="text-input" type="text"></input></div>'
+        '<div class="grid-item"><div class="item"><span><b>'+S+'</b></span></div><span>R$ </span><input class="text-input" type="text"></input></div>'
     );
 }
