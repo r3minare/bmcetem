@@ -175,7 +175,7 @@ p {
 }
 
 /* Small Screens (mobile) */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .grid-container{
     grid-template-columns: auto auto;
   }

@@ -55,7 +55,7 @@ var Equip = document.getElementById('equip');
 for(let i=0;i<EQUIPAMENTOS.length;i++){
     let S = EQUIPAMENTOS[i];
     Equip.innerHTML += (
-        '<input type="radio" id="'+S+'" name="equipamento" value="'+S+'"> </input>'+
+        '<input type="radio" id="'+S+'" name="equipamento" value="'+S+'"></input>'+
         '<label for="'+S+'">'+S+'</label><br>'
     );
 }
@@ -65,6 +65,27 @@ var Valor = document.getElementById('valor');
 for(let i=0;i<MATERIAIS.length;i++){
     let S = MATERIAIS[i];
     Valor.innerHTML += (
-        '<div class="grid-item"><div class="item"><span><b>'+S+'</b></span></div><span>R$ </span><input class="text-input" type="text"></input></div>'
+        '<div class="grid-item">'+
+          '<div class="item">'+
+            '<span><b>'+
+            S+
+            '</b></span>'+
+          '</div>'+
+          '<span>R$ </span>'+
+          '<input class="text-input" type="text"></input>'+
+        '</div>'
+    );
+}
+
+/* -------MASSA-------- */
+var Massa = document.getElementById('massa');
+for(let i=0;i<MATERIAIS.length;i++){
+    let S = MATERIAIS[i];
+    Massa.innerHTML += (
+        '<div class="grid-item">'+
+        '<h4>'+S+'</h4>'+
+          '<span class="value" id="'+S+'-m'+'"></span>'+'<span>g</span><br>'+
+          '<span class="value" id="'+S+'-p'+'"></span>'+'<span>%</span>'+
+        '</div>'
     );
 }
