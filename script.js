@@ -36,9 +36,8 @@ function setIntFilter(el_id){
 }
 
 function setFloatFilter(el_id){
-    console.log(el_id);
     setInputFilter(document.getElementById(el_id), function(value) {
-        return /^(\d+,\d+|\d*)$/.test(value); // Allow digits and '.' only, using a RegExp
+        return /^[\+\-]?\d*,\d+$/.test(value); // Allow digits and '.' only, using a RegExp
     });
 }
 
@@ -91,6 +90,10 @@ var BASES = {
     "ACRÍLICO":  null,	
     "FONTE"	  :  null,
     }
+}
+
+function newFunction(el_id) {
+    console.log(el_id);
 }
 
 function to_screen(x){
@@ -166,6 +169,18 @@ Massa.innerHTML += (
     '</div>'
 );
 
+function get_equip(){
+    let equips = document.getElementsByName("equip-input");
+    let equip;
+    for(let i=0;i<equips.length;i++){
+        if (equips[i].checked){
+            equip = equips[i].value;
+            break;
+        }
+    }
+    return equip;
+}
+
 function update_base(){
     let base = document.getElementById("base-input").value;
     if (base === NO_BASE) return;
@@ -190,21 +205,26 @@ function load_base(){
 function _load_base(base){
     for(let i=0;i<MATERIAIS.length;i++){
         let mat = MATERIAIS[i];
+        let mat_v = mat + '-v';
         let val = BASES[base][mat];
         if(val === null){
             val = "0,00";
         }else{
-            val = val.toString();
+            val = to_screen((val.toFixed(2)).toString());
         }
-        let input_v = document.getElementById(mat+"-v");
-        input_v.value = to_screen(val);
+        document.getElementById(mat_v).value = val;
     }
 }
 
 _load_base(NO_BASE);
 
-function update_price(){
-    let base = document.getElementById("base-input").value;
+function update_price(){ 
+    let equip = get_equip();
+
+    if (equip === undefined) return;
+
+    let equip_dados = DADOS[equip];
+
     let quant = parseFloat(from_screen(document.getElementById("quant-input").value));
 
     let total = 0.0;
@@ -218,7 +238,11 @@ function update_price(){
         if(val === null){
             val = 0.0;
         }
-        let tval = val * quant;
+
+        let mat_m = equip_dados[2*i + 3];
+
+        let tval = val * quant * (mat_m/1000);
+
         let span_tv = document.getElementById(mat_tv);
         span_tv.innerHTML = to_screen((tval.toFixed(2)).toString());
         total += tval;
@@ -227,14 +251,9 @@ function update_price(){
 }
 
 function update_mass(){
-    let equips = document.getElementsByName("equip-input");
-    let equip;
-    for(let i=0;i<equips.length;i++){
-        if (equips[i].checked){
-            equip = equips[i].value;
-            break;
-        }
-    }
+    
+    let equip = get_equip();
+
     if (equip === undefined) return;
 
     let quant = parseInt(document.getElementById("quant-input").value);
