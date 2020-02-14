@@ -16,7 +16,7 @@ function setInputFilter(textbox, inputFilter) {
     });
   }
 
-var NO_BASE = "Nenhum";
+var NO_BASE = "Nenhuma";
 
 var DADOS = {
     "Monitor CRT Modelo FA 3435": ["Modelo", "MITSUBISHI", 48.0, null, 0.0, 5937.0, 44.03, 0.0, 0.0, 1469.0, 10.89, 401.0, 2.97, 0.0, 0.0, 1991.0, 14.77, null, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -51,7 +51,7 @@ var MATERIAIS = [
 ]
 
 var BASES = {
-"Nenhum" : {
+"Nenhuma" : {
     "PLÁSTICO":	 1.50,
     "VIDRO"   : 10.00,
     "ALUMÍNIO":  2.50,
@@ -156,16 +156,20 @@ for(let i=0;i<MATERIAIS.length;i++){
     let mat_p = mat + '-p';
     Massa.innerHTML += (
         '<div class="grid-item">'+
-        '<h4>' + mat + '</h4>'+
-            '<span class="value" id="' + mat_m + '"></span>'+'<span>g</span><br>'+
-            '<span class="value" id="' + mat_p + '"></span>'+'<span>%</span>'+
+            '<div class="item">'+
+                '<span><b>' + mat + '</b></span><br>'+
+            '</div>'+
+            '<b><span class="value" id="' + mat_m + '">0</span>'+'<span>g</span><br></b>'+
+            '<span class="value" id="' + mat_p + '">0,0</span>'+'<span>%</span>'+
         '</div>'
     );
 }
 Massa.innerHTML += (
     '<div class="grid-item">'+
-        '<h4>Total</h4>'+
-            '<span id="total-m"></span><span>Kg</span>'+
+        '<div class="item">'+
+            '<span><b>Total</b></span><br>'+
+        '</div>'+
+        '<b><span id="total-m">0,0</span><span>Kg</span></b>'+
     '</div>'
 );
 
@@ -287,3 +291,6 @@ function update_all(){
     update_price();
     update_mass();
 }
+
+let equip = EQUIPAMENTOS[0]; document.getElementById(equip).checked = true;
+update_all();
