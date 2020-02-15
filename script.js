@@ -115,7 +115,7 @@ var Equip = document.getElementById('equip');
 for(let i=0;i<EQUIPAMENTOS.length;i++){
     let equip = EQUIPAMENTOS[i];
     Equip.innerHTML += (
-        '<input type="radio" id="' + equip + '" name="equip-input" value="' + equip + '"></input>'+
+        '<input type="radio" id="' + equip + '" name="equip-input" value="' + equip + '">'+
         '<label for="' + equip + '">' + equip + '</label><br>'
     );
 }
@@ -130,7 +130,7 @@ for(let i=0;i<MATERIAIS.length;i++){
         '<div class="grid-item">'+
           '<div class="item">'+
             '<span><b>' + mat + '</b><br>R$</span>'+
-            '<input class="text-input" type="text" id="' + mat_v + '" value="" onchange="reset_base();"></input>'+
+            '<input class="text-input" type="text" id="' + mat_v + '" value="" onchange="reset_base();">'+
             '<span>/Kg</span>'+
           '</div>'+
 
