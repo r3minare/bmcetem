@@ -60,7 +60,7 @@ var BASES = {
     "PLACA"   :  4.50,
     "YOK"     :	 null,
     "BORRACHA":  null,
-    "LÂMPADA" :- 1.00,
+    "LÂMPADA" :  1.00,
     "ACRÍLICO":  null,	
     "FONTE"	  :  null,
     },
